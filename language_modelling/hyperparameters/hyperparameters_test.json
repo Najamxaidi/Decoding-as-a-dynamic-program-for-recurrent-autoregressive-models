@@ -1,0 +1,71 @@
+{
+    "training": {
+      "general": {
+        "optimizer": "adam",
+        "clip_c": 5,
+        "lrate": 0.001,
+        "num_epochs": 1,
+        "tie_weights": false
+      },
+      "train": {
+        "model_name": "trained_LM_wiki_model.ckpt",
+        "reverse_model_name": "trained_LM_wiki_model.ckpt",
+        "save_model_dir": "language_modelling/saved_models/"
+      }
+    },
+    "management": {
+      "task": "language_modelling_wiki",
+      "preprocess": false,
+      "train": false,
+      "infer": true,
+      "monitor_loss": 25,
+      "checkpoint_freq": 50,
+      "cuda": true,
+      "seed": 200
+    },
+    "data": {
+      "general": {
+        "batch_size": 1,
+        "bptt": 15,
+        "min_freq": 5
+      },
+      "preprocess": {
+        "raw_data_path": "data/wikitext-2/preprocessed/",
+        "train_file_name": "train",
+        "dev_file_name": "dev",
+        "test_file_name": "test",
+        "save_dir_for_model_data": "data/wikitext-2/model_data/",
+        "merge_dir": "data/wikitext-2/preprocessed/"
+      },
+      "train": {
+        "load_model_data": "data/wikitext-2/model_data/"
+      }
+    },
+    "model": {
+      "rnn_type": "LSTM",
+      "emb_size": 128,
+      "hidden_size": 256,
+      "layers": 1,
+      "drop_out": 0,
+      "bidirectional": false
+    },
+    "inference": {
+      "general": {
+        "save_file_name": "decode.txt",
+        "save_path": "language_modelling/outputs/",
+        "number_of_blanks": 2,
+        "mask_rate": 50,
+        "expand": 5,
+        "max_iter": 100,
+        "alpha": 0.06,
+        "total_examples": 50,
+        "beta": 0,
+        "gamma": 0
+      }
+    },
+    "paths": {
+      "Linux": "/home/snzai1/PycharmProjects/diff_inference_scheme/implementation/",
+      "Mac": "/Users/najamzaidi/projects/PhD/diff_inference_scheme/implementation/",
+      "m3": "/home/snzai1/da33_scratch/najam/diff_inference_scheme/implementation/"
+    }
+  }
